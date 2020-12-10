@@ -1,0 +1,125 @@
+mixin sidenav(options)
+
+    nav.sidenav.shadow-right(class=options.sidenavStyle)
+            
+        .sidenav-menu
+            
+            .nav.accordion#accordionSidenav
+        
+                .sidenav-menu-heading
+                    | Management Information System 
+                a.nav-link(href='index.html')
+                    .nav-link-icon
+                        i(data-feather='activity')
+                    | Dashboard   
+                
+                //- .sidenav-menu-headin Benefiters   
+
+                a.nav-link(href='smallholders.html')
+                    .nav-link-icon
+                        i(data-feather='smile')
+                    | Small-Holders
+
+                a.nav-link(href='societies.html')
+                    .nav-link-icon
+                        i(data-feather='users')
+                    | Societies
+
+                //- Territory Registration
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseInfra', aria-expanded='false', aria-controls='collapseInfra')
+                    .nav-link-icon
+                        i(data-feather='grid')
+                    |Territory Registration
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseInfra.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing.html')
+                            | Rural Road Rehabilitation
+                        a.nav-link(href='invoice.html')
+                            | Multipurpose Building Development
+
+                //- Income Diversification
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseIncome', aria-expanded='false', aria-controls='collapseIncome')
+                    .nav-link-icon
+                        i(data-feather='dollar-sign')
+                    | Income Diversification
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseIncome.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing1.html')
+                            | Machine Grants
+                        a.nav-link(href='invoice1.html')
+                            | Business Linkages 
+                        a.nav-link(href='invoice2.html')
+                            | Rural Finance   
+                
+                //- Training
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseTraining', aria-expanded='false', aria-controls='collapseTraining')
+                    .nav-link-icon
+                        i(data-feather='airplay')
+                    | Training 
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseTraining.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing3.html')
+                            | Training and Extension
+                        a.nav-link(href='invoice3.html')
+                            | Stakeholder Capacity Improvement
+
+                //- Reports
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseReports', aria-expanded='false', aria-controls='collapseReports')
+                    .nav-link-icon
+                        i(data-feather='pie-chart')
+                    | Reports 
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseReports.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing31.html')
+                            | Management and Admin Reports
+                        a.nav-link(href='invoice31.html')
+                            | M and E Reports
+                
+                //- Territory Registration 
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseTerritory', aria-expanded='false', aria-controls='collapseTerritory')
+                    .nav-link-icon
+                        i(data-feather='map')
+                    | Territory Registration 
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseTerritory.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing4.html')
+                            | District Registration
+                        a.nav-link(href='invoice41.html')
+                            | Divisional Secretary Division Registration
+                        a.nav-link(href='invoice42.html')
+                            | TI Range Registration 
+                        a.nav-link(href='invoice43.html')
+                            | Grama Niladari Division Registration 
+
+                //- User Registration
+                a.nav-link.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#collapseUser', aria-expanded='false', aria-controls='collapseUser')
+                    .nav-link-icon
+                        i(data-feather='user-plus')
+                    | User Registration
+                    .sidenav-collapse-arrow
+                        i.fas.fa-angle-down
+                #collapseUser.collapse(data-parent='#accordionSidenav')
+                    nav.sidenav-menu-nested.nav
+                        a.nav-link(href='pricing5.html')
+                            | Field Animator Registration 
+                        a.nav-link(href='invoice51.html')
+                            | CDO/BDO Registration
+                        a.nav-link(href='invoice52.html')
+                            | DMPU Registration 
+                        a.nav-link(href='invoice53.html')
+                            | PM Unit Staff Registration
+               
+        .sidenav-footer        
+            .sidenav-footer-content
+                .sidenav-footer-subtitle Logged in as:
+                .sidenav-footer-title Valerie Luna

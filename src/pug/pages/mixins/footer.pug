@@ -1,0 +1,13 @@
+mixin footer(options)
+
+    footer.footer.mt-auto(class=options.footerStyle)
+        .container-fluid
+            .row
+                .col-md-6.small
+                    | Copyright &copy; #{options.websiteName}
+                .col-md-6.text-md-right.small
+                    a(href='call:+94112882244') Telephone +94-11 2882244
+                    | 
+                    | &middot;
+                    | 
+                    a(href='#!') Terms &amp; Conditions

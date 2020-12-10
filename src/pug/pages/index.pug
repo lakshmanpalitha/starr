@@ -1,0 +1,153 @@
+//- * * * * * * * *
+//- * * Layout  * *
+//- * * * * * * * *
+
+//- The page layout is set using the Pug `extends` directive with a path to a layout template
+//- All of the layout options are contained in src/pug/layouts
+extends ../layouts/dashboard.pug
+
+//- * * * * * * * *
+//- * * Config  * *
+//- * * * * * * * *
+
+//- These are page-level configuration options that should be set for each page
+block config
+    - var navPosition = 'nav-fixed'
+    - var pageTitle = 'Affiliate Dashboard'
+
+//- Add CSS for third party plugins used on this page
+append css
+    //- Load Date Range Picker via CDN
+    link(href='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css', rel='stylesheet', crossorigin='anonymous')
+
+//- * * * * * * * *
+//- * * Topnav  * *
+//- * * * * * * * *
+
+//- Define the `block topnav` from the layout
+block topnav
+
+    //- Bring in the sidenav mixin and configure
+    //- For all available config options for this mixin, visit https://docs.startbootstrap.com/sb-admin-pro/
+    include mixins/topnav.pug
+    +topnav({
+        topnavStyle: 'navbar-light bg-white'
+    })
+
+//- * * * * * * * *
+//- * * Sidenav * *
+//- * * * * * * * *
+
+//- Define the `block sidenav` from the layout
+//- Note: The chosen page layout must have a `block sidenav` or no sidenav will appear
+block sidenav
+
+    //- Bring in the sidenav mixin and configure
+    //- For all available config options for this mixin, visit https://docs.startbootstrap.com/sb-admin-pro/
+    include mixins/sidenav.pug
+    +sidenav({
+        sidenavStyle: 'sidenav-light'
+    })
+
+//- * * * * * * * * * * *
+//- * * Page Content  * *
+//- * * * * * * * * * * *
+
+//- Define the main `block content` from the layout
+block content
+
+    // Main page content
+    .container
+        // Illustration dashboard card example
+        .card.card-waves.mb-4.mt-4
+            .card-body.p-5
+                .row.align-items-center.justify-content-between
+                    .col
+                        h2.text-primary STARR Project for poverty reduction and uplifting livelihood
+                        p.text-sm.text-gray-700 The smallholders dominate Sri Lanka's tea and rubber sectors, which have been making a notable contribution to the national economy for over a century. They account for 73% share of the country's tea production and 63% share of rubber production. There are tremendous opportunities and challengers for the sustainable smallholder tea and rubber development, particularly in terms of productivity and market linkages that impacts directly on the smallholders' livelihood and poverty levels.
+                        a.btn.btn-primary.btn-sm.px-3.py-2(href="smallholders.html")
+                            | Explorer Benefiters
+                            i.ml-1(data-feather='arrow-right')
+                    .col.d-none.d-lg-block.mt-xxl-n4
+                        img.img-fluid.px-xl-4.mt-xxl-n5(src='assets/img/freepik/team-spirit-pana.svg')
+
+        .row
+
+            .col-xl-3.col-md-6.mb-4
+
+                // Dashboard info widget 1
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-primary.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-primary.mb-1 Smallholders
+                                .h5 $4,390
+                                .text-xs.font-weight-bold.text-success.d-inline-flex.align-items-center
+                                    i.mr-1(data-feather='trending-up')
+                                    | 12%
+                            .ml-2
+                                i.fas.fa-dollar-sign.fa-2x.text-gray-200
+
+            .col-xl-3.col-md-6.mb-4
+
+                // Dashboard info widget 2
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-secondary.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-secondary.mb-1 Total Societies
+                                .h5 $27.00
+                                .text-xs.font-weight-bold.text-success.d-inline-flex.align-items-center
+                                    i.mr-1(data-feather='trending-up')
+                                    | 3%
+                            .ml-2
+                                i.fas.fa-tag.fa-2x.text-gray-200
+
+            .col-xl-3.col-md-6.mb-4
+
+                // Dashboard info widget 3
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-success.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-success.mb-1 Income
+                                .h5 11,291
+                                .text-xs.font-weight-bold.text-danger.d-inline-flex.align-items-center
+                                    i.mr-1(data-feather='trending-down')
+                                    | 12%
+                            .ml-2
+                                i.fas.fa-mouse-pointer.fa-2x.text-gray-200
+
+            .col-xl-3.col-md-6.mb-4
+
+                // Dashboard info widget 4
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-orange.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-orange.mb-1 Conversion Rate
+                                .h5 1.23%
+                                .text-xs.font-weight-bold.text-danger.d-inline-flex.align-items-center
+                                    i.mr-1(data-feather='trending-down')
+                                    | 1%
+                            .ml-2
+                                i.fas.fa-percentage.fa-2x.text-gray-200
+
+        .row
+
+
+//- * * * * * * * *
+//- * * Footer  * *
+//- * * * * * * * *
+
+//- Define the `block footer` from the layout
+block footer
+
+    //- Bring in the footer mixin and configure
+    //- For all available config options for this mixin, visit https://docs.startbootstrap.co/sb-admin-pro/
+    include mixins/footer.pug
+    +footer({
+        footerStyle: 'footer-light',
+        websiteName: 'Smallholder Tea and Rubber Revitalization (STaRR)'
+    })
+
