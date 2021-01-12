@@ -867,15 +867,14 @@ elseif($option == "list_filter_benifiter")
         $benifiter_data = callService("/get_all_benifiters$qry_str");
     }
 ?>
-    <table class="table table-hover" id="tbl_benifiter">
+    <table class="table table-bordered table-striped" id="tbl_benifiter">
         <thead>
           <tr>
-            <th style="width: 20%;">Name</th>
+            <th>Name</th>
             <th>NIC</th>
             <th>Gender</th>
             <th>Year</th>
             <th>District</th>
-            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -885,16 +884,16 @@ elseif($option == "list_filter_benifiter")
             foreach ($benifiter_data as $row) {
         ?>
             <tr>
-                <td style="width: 20%;"><?php echo $row->name; ?></td>
+                <td><?php echo $row->name; ?></td>
                 <td><?php echo $row->nic_no; ?></td>
                 <td><?php echo $row->gender; ?></td>
                 <td><?php echo $row->year; ?></td>
                 <td><?php echo $row->district_name; ?></td>
                 <?php if($edit_ok){ ?>
-                    <td><button type="button" id="<?php echo "edit_" . $row->id; ?>" class="btn btn-primary btn-xs edit"  data-toggle="modal" data-target="#editModal" data-backdrop="static">Edit</button></td>
+                    <td><button type="button" id="<?php echo "edit_" . $row->id; ?>" class="btn bg-gradient-primary"  data-toggle="modal" data-target="#editModal" data-backdrop="static"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>
                 <?php } ?>
                 <?php if($payment_ok){ ?>
-                    <td><button type="button" id="<?php echo "pay_" . $row->id; ?>" class="btn btn-primary btn-xs pay"  data-toggle="modal" data-target="#payModal" data-backdrop="static">Pay</button></td>
+                    <button type="button" id="<?php echo "pay_" . $row->id; ?>" class="btn bg-gradient-primary"  data-toggle="modal" data-target="#payModal" data-backdrop="static"><i class="fas fa-play"></i>&nbsp;&nbsp;Pay</button></td>
                 <?php } ?>
             </tr>
         <?php
