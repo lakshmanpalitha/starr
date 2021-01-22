@@ -4,21 +4,44 @@ $redirect_page = (isset($_GET['redirect_to']) ? $_GET['redirect_to'] : 'index.ph
 
 ?>
 
+<?php
+ob_start();
+if(!isset($_SESSION))
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once('header.php'); ?>
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/js/plugins/select2/css/select2.min.css">
+
+  <link rel="stylesheet" href="dist/js/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="dist/js/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="dist/js/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="dist/js/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/styles.css">
 <style type="text/css">
 .modal-header .close
 {
     display: none;
 }
 </style>
-<body>
-      <div class="row" style="padding-top: 50px;">
+<body class="hold-transition login-page">
+      <!-- <div class="row" style="padding-top: 50px;">
         <div class="col-lg-4 col-sm-4 col-xs-2"></div>
         <div class="col-lg-4 col-sm-4 col-xs-8">
             <form class="form-horizontal" id="login_form">
-                <!-- Modal content-->
+
                 <div class="modal-content" style="min-width: 200px;">
                     
                     <div class="modal-header">
@@ -51,72 +74,83 @@ $redirect_page = (isset($_GET['redirect_to']) ? $_GET['redirect_to'] : 'index.ph
              </form>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-2"></div>
-      </div>
+      </div> -->
+
+
+      <div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="#" class="h1"><b>Admin</b>Login</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form id="login_form">
+        <div class="input-group mb-3">
+        <input type="text" class="form-control" name="u_name" id="u_name" placeholder="Enter your username" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+        <input type="password" class="form-control" name="p_word" id="p_word" placeholder="Enter password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+          <button id="btn_login" type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+<!-- 
+      <div class="social-auth-links text-center mt-2 mb-3">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div> -->
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+      </p>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="dist/js/adminlte.js"></script>
+
+<script src="js/login.js"></script>
+
 </body>
-<script>
-    //service_url = "http://localhost/starr/services/index.php";
-    //service_url = "http://starr.lk/services/index.php";
-    
-    $("#login_form").submit(function(e) {
-            var redirect_page = "<?php echo $redirect_page; ?>"; 
-            // stop form from submitting
-            e.preventDefault();
-            
-            var $form = $(this);
-        
-            var data = $form.serializeArray();
-            var u_name = $("#u_name").val();
-            var p_word = $("#p_word").val(); 
-            
-            //freez form
-            //var $inputs = $("#login_form").find("input, select, button, textarea");                                              
-            //$inputs.prop("disabled", true);
-            
-            // make a POST ajax call 
-            $.ajax({
-                type: "POST",
-                url: 'refresh_content.php',
-                //async:false,
-                data: {option:'login_user', u_name: u_name, p_word: p_word},
-                beforeSend: function ( xhr ) {
-                    // maybe tell the user that the request is being processed
-                    //$("#status").show().html("<img src='images/preloader.gif' width='32' height='32' alt='processing...'>");
-                }
-                }).done(function( result ) {
-                  debugger;
-                    var ret_val = JSON.parse(result);
-                    //if(ret_val.u_name !== 'undefined')
-                        //window.location.replace(redirect_page);
-                    if(ret_val.status[0] == 1)
-                    {
-                      SetLoginData(ret_val.user[0]);
-                        
-                      window.location.replace(redirect_page);
-                    }
-                    else if(ret_val.status[0] == -1)
-                    {
-                        $("#message").html("<p style=\"color:red\">Incorrect login details</p>");
-                    }
-                    $inputs.prop("disabled", false);
-                });
-    });
-        
-    function SetLoginData(user)
-    {
-        $.ajax({
-            type: "GET",
-            url: "refresh_content.php",
-            data: {option: 'login_data', user:user },
-            dataType: "html",
-            success: function(res)
-                    {
-                        $("#login_note").empty();
-		                $("#login_note").html(res);
-                    },
-            failure: function () {
-                alert("Failed!");
-            }
-        });
-    }
-</script>
 </html>
