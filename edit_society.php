@@ -111,221 +111,227 @@ else
 ?>
 
     <div id="model_content" class="modal-body">
-          <div class="form-group" style="display: none;">
-            <label class="control-label col-sm-2" for="id">ID:</label>
-            <div class="col-sm-10">
+    <div class="row">
+          <div class="form-group col-4" style="display: none;">
+            <label class="control-label" for="id">ID:</label>
               <input type="text" class="form-control" name="id" id="id" value="<?php echo $id; ?>">
-            </div>
           </div>
             
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Name:</label>
-            <div class="col-sm-10">
+          <div class="form-group col-4">
+            <label class="control-label" for="name">Name:</label>
               <input type="text" class="form-control" name="name" id="name" placeholder="Enter society name" value="<?php echo $name; ?>" required>
-            </div>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="address">Address:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" value="<?php echo $address; ?>">
-            </div>
+          <div class="form-group col-4">
+            <label class="control-label" for="address">Address:</label>
+            <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" value="<?php echo $address; ?>">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="contact_no">Contact No:</label>
-            <div class="col-sm-10">
-              <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="contact_no" id="contact_no" placeholder="Enter contact number" value="<?php echo $contact_no; ?>" required>
-            </div>
+          <div class="form-group col-4">
+            <label class="control-label" for="contact_no">Contact No:</label>
+            <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="contact_no" id="contact_no" placeholder="Enter contact number" value="<?php echo $contact_no; ?>" required>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="num_of_male">Num of Males:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="num_of_male" id="num_of_male" placeholder="Enter number of males" value="<?php echo $num_of_male; ?>" required>
-            </div>
+          <div class="form-group col-4">
+            <label class="control-label" for="num_of_male">Num of Males:</label>
+            <input type="text" class="form-control" name="num_of_male" id="num_of_male" placeholder="Enter number of males" value="<?php echo $num_of_male; ?>" required>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="num_of_female">Num of Females:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="num_of_female" id="num_of_female" placeholder="Enter number of females" value="<?php echo $num_of_female; ?>">
-            </div>
+
+          <div class="form-group col-4">
+            <label class="control-label" for="num_of_female">Num of Females:</label>
+            <input type="text" class="form-control" name="num_of_female" id="num_of_female" placeholder="Enter number of females" value="<?php echo $num_of_female; ?>">
           </div>
           
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="reg_number">Reg No:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="reg_number" id="reg_number" placeholder="Enter registration number" value="<?php echo $reg_number; ?>">
-            </div>
+          <div class="form-group col-4">
+            <label class="control-label" for="reg_number">Reg No:</label>
+            <input type="text" class="form-control" name="reg_number" id="reg_number" placeholder="Enter registration number" value="<?php echo $reg_number; ?>">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="reg_date">Reg Date:</label>
-            <div class="col-sm-10">
-              <input type="date" class="form-control short" name="reg_date" id="reg_date" value="<?php echo $reg_date; ?>" style="max-width: 160px;">
-            </div>
+          <div class="form-group col-3">
+            <label class="control-label" for="reg_date">Reg Date:</label>
+            <input type="date" class="form-control short" name="reg_date" id="reg_date" value="<?php echo $reg_date; ?>" >
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="society_code">Society Code:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="society_code" id="society_code" placeholder="Enter society code" value="<?php echo $society_code; ?>">
-            </div>
+          <div class="form-group col-3">
+            <label class="control-label" for="society_code">Society Code:</label>
+            <input type="text" class="form-control" name="society_code" id="society_code" placeholder="Enter society code" value="<?php echo $society_code; ?>">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="s_group_code">S Group Code:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="s_group_code" id="s_group_code" placeholder="Enter S group code" value="<?php echo $s_group_code; ?>">
-            </div>
+          <div class="form-group col-3">
+            <label class="control-label" for="s_group_code">S Group Code:</label>
+            <input type="text" class="form-control" name="s_group_code" id="s_group_code" placeholder="Enter S group code" value="<?php echo $s_group_code; ?>">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="fa_code">FA Code:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="fa_code" id="fa_code" placeholder="Enter FA code" value="<?php echo $fa_code; ?>" >
-            </div>
+          <div class="form-group col-3">
+            <label class="control-label" for="fa_code">FA Code:</label>
+            <input type="text" class="form-control" name="fa_code" id="fa_code" placeholder="Enter FA code" value="<?php echo $fa_code; ?>" >
           </div>
-          
+          </div>
+          <!-- /President Details -->
           <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#president">President Details</a>
-                            </h4>
-                          </div>
-                          <div id="president" class="panel-collapse collapse">
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="president_name">Name:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="president_name" id="president_name" placeholder="Enter president name" value="<?php echo $president_name; ?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="president_address">Address:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="president_address" id="president_address" placeholder="Enter president address" value="<?php echo $president_address; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="president_contact_no">Contact No:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="president_contact_no" id="president_contact_no" placeholder="Enter president contact number" value="<?php echo $president_contact_no; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="president_gender">Gender:</label>
-                                <div class="col-sm-10">
-                                  <select class="form-control short" name="president_gender" id="president_gender">
-                                    <option value="M" <?php echo ($president_gender == "M") ? "selected" :"";?>>Male</option>
-                                    <option value="F" <?php echo ($president_gender == "F") ? "selected" :"";?>>Female</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="president_dob">DoB:</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control short" name="president_dob" id="president_dob" value="<?php echo $president_dob; ?>">
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+              <div class="card card-primary collapsed-card">
+                <div class="card-header">
+                  <h3 class="card-title">President Details</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.card-tools -->
                 </div>
+                <!-- /.card-header -->
+                <div class="card-body"  style="display: none;">
+                
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="president_name">Name:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="president_name" id="president_name" placeholder="Enter president name" value="<?php echo $president_name; ?>">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="president_address">Address:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="president_address" id="president_address" placeholder="Enter president address" value="<?php echo $president_address; ?>" >
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="president_contact_no">Contact No:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="president_contact_no" id="president_contact_no" placeholder="Enter president contact number" value="<?php echo $president_contact_no; ?>" >
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="president_gender">Gender:</label>
+                              <div class="col-sm-10">
+                                <select class="form-control short" name="president_gender" id="president_gender">
+                                  <option value="M" <?php echo ($president_gender == "M") ? "selected" :"";?>>Male</option>
+                                  <option value="F" <?php echo ($president_gender == "F") ? "selected" :"";?>>Female</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="president_dob">DoB:</label>
+                              <div class="col-sm-10">
+                                  <input type="date" class="form-control short" name="president_dob" id="president_dob" value="<?php echo $president_dob; ?>">
+                              </div>
+                          </div>
+                        
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>          
+          </div>
+          <!-- /Secretary Details -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary collapsed-card">
+                <div class="card-header">
+                  <h3 class="card-title">Secretary Details</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" style="display: none;">
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="sec_name">Name:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="sec_name" id="sec_name" placeholder="Enter Secretary name" value="<?php echo $sec_name; ?>">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="sec_address">Address:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="sec_address" id="sec_address" placeholder="Enter Secretary address" value="<?php echo $sec_address; ?>" >
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="sec_contact_no">Contact No:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="sec_contact_no" id="sec_contact_no" placeholder="Enter Secretary contact number" value="<?php echo $sec_contact_no; ?>" >
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="sec_gender">Gender:</label>
+                              <div class="col-sm-10">
+                                <select class="form-control short" name="sec_gender" id="sec_gender">
+                                  <option value="M" <?php echo ($sec_gender == "M") ? "selected" :"";?>>Male</option>
+                                  <option value="F" <?php echo ($sec_gender == "F") ? "selected" :"";?>>Female</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="sec_dob">Secretary  DoB:</label>
+                              <div class="col-sm-10">
+                                  <input type="date" class="form-control" name="sec_dob" id="sec_dob" value="<?php echo $sec_dob; ?>" style="max-width: 160px;">
+                              </div>
+                          </div>
+                        
+                        
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>          
           </div>
           
+          <!-- /Treasure Details -->
           <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#secretary">Secretary Details</a>
-                            </h4>
-                          </div>
-                          <div id="secretary" class="panel-collapse collapse">
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="sec_name">Name:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="sec_name" id="sec_name" placeholder="Enter Secretary name" value="<?php echo $sec_name; ?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="sec_address">Address:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="sec_address" id="sec_address" placeholder="Enter Secretary address" value="<?php echo $sec_address; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="sec_contact_no">Contact No:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="sec_contact_no" id="sec_contact_no" placeholder="Enter Secretary contact number" value="<?php echo $sec_contact_no; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="sec_gender">Gender:</label>
-                                <div class="col-sm-10">
-                                  <select class="form-control short" name="sec_gender" id="sec_gender">
-                                    <option value="M" <?php echo ($sec_gender == "M") ? "selected" :"";?>>Male</option>
-                                    <option value="F" <?php echo ($sec_gender == "F") ? "selected" :"";?>>Female</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="sec_dob">Secretary  DoB:</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" name="sec_dob" id="sec_dob" value="<?php echo $sec_dob; ?>" style="max-width: 160px;">
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+              <div class="card card-primary collapsed-card">
+                <div class="card-header">
+                  <h3 class="card-title">Treasure Details</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.card-tools -->
                 </div>
-          </div>
-          
-          <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#treasure">Treasure Details</a>
-                            </h4>
+                <!-- /.card-header -->
+                <div class="card-body" style="display: none;">
+                
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="treasure_name">Name:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="treasure_name" id="treasure_name" placeholder="Enter treasure name" value="<?php echo $treasure_name; ?>">
+                              </div>
                           </div>
-                          <div id="treasure" class="panel-collapse collapse">
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="treasure_name">Name:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="treasure_name" id="treasure_name" placeholder="Enter treasure name" value="<?php echo $treasure_name; ?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="treasure_address">Address:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="treasure_address" id="treasure_address" placeholder="Enter treasure address" value="<?php echo $treasure_address; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="treasure_contact_no">Contact No:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="treasure_contact_no" id="treasure_contact_no" placeholder="Enter treasure contact number" value="<?php echo $treasure_contact_no; ?>" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="treasure_gender">Gender:</label>
-                                <div class="col-sm-10">
-                                  <select class="form-control short" name="treasure_gender" id="treasure_gender">
-                                    <option value="M" <?php echo ($treasure_gender == "M") ? "selected" :"";?>>Male</option>
-                                    <option value="F" <?php echo ($treasure_gender == "F") ? "selected" :"";?>>Female</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="treasure_dob">DoB:</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control short" name="treasure_dob" id="treasure_dob" value="<?php echo $treasure_dob; ?>">
-                                </div>
-                            </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="treasure_address">Address:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="treasure_address" id="treasure_address" placeholder="Enter treasure address" value="<?php echo $treasure_address; ?>" >
+                              </div>
                           </div>
-                        </div>
-                    </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="treasure_contact_no">Contact No:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" onkeydown="return isNumber(event);" maxlength="10" class="form-control short" name="treasure_contact_no" id="treasure_contact_no" placeholder="Enter treasure contact number" value="<?php echo $treasure_contact_no; ?>" >
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="treasure_gender">Gender:</label>
+                              <div class="col-sm-10">
+                                <select class="form-control short" name="treasure_gender" id="treasure_gender">
+                                  <option value="M" <?php echo ($treasure_gender == "M") ? "selected" :"";?>>Male</option>
+                                  <option value="F" <?php echo ($treasure_gender == "F") ? "selected" :"";?>>Female</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="treasure_dob">DoB:</label>
+                              <div class="col-sm-10">
+                                  <input type="date" class="form-control short" name="treasure_dob" id="treasure_dob" value="<?php echo $treasure_dob; ?>">
+                              </div>
+                          </div>
+                        
+                        
+                        
                 </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>          
           </div>
+
           
           <div class="form-group">
             <label class="control-label col-sm-2" for="district_id">District:</label>
