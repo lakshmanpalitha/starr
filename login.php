@@ -59,6 +59,12 @@ if(!isset($_SESSION))
     bottom: 0;
     background-size: cover;
 }
+.login-box, .register-box {
+    width: 400px;
+}
+.logo-image{
+  margin-bottom:10px;
+}
 </style>
 <body class="hold-transition login-page LoginPage">
       <!-- <div class="row" style="padding-top: 50px;">
@@ -105,7 +111,8 @@ if(!isset($_SESSION))
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Admin</b>Login</a>
+      <img class="logo-image" src="images/logos/starr-logo.png" alt="Starr logo">
+      <a href="#" class="h1"><b>MIS</b>Login</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
