@@ -35,8 +35,32 @@ if(!isset($_SESSION))
 {
     display: none;
 }
+.LoginPage{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(images/login/background.jpg) 0 0 no-repeat;
+    background-size: cover;
+    align-items:right;
+
+}
+.LoginPage::before{
+    content: '';
+    background-color: #fff;
+    opacity: 0.8;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
 </style>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page LoginPage">
       <!-- <div class="row" style="padding-top: 50px;">
         <div class="col-lg-4 col-sm-4 col-xs-2"></div>
         <div class="col-lg-4 col-sm-4 col-xs-8">
