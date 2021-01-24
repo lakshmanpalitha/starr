@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once('header.php'); ?>
-<body>
-<?php 
-    include_once('nav_bar.php'); 
-    include_once('link_service.php'); 
-    include_once('access.php');
-?>	
+<?php
+ob_start();
+if(!isset($_SESSION))
+    session_start();
+?>
+<?php include_once( 'includes/head.php');?>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <?php include_once('includes/app_header.php'); ?>
+
+        <?php 
+            include_once('includes/side_nav.php');
+            include_once('link_service.php'); 
+            include_once('access.php');   
+
+        ?>
 
 <?php 
     $section = "society";
@@ -33,34 +41,123 @@
     if($view_ok)
         $data = callService("/get_all_society?uid=$curr_uid");
 ?>
-    <?php
-      if($new_ok)
-      {
-    ?>
-      <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <div class="row">
-                <div class="col-lg-2"><button id="new_society" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#editModal">New Society</button></div>
-                <div class="col-lg-10"></div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Manage Society</h1>
+                        </div><!-- /.col -->
+                        <!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
             </div>
-        </div>
-        <div class="col-lg-1"></div>
-      </div>
-    <?php
-      }
-    ?>
-    
-    <?php
-        if($view_ok)
-        {
-    ?>
-          <!-- Example row of columns -->
-          <div class="row">
-            <div class="col-lg-1 side_border"></div>
-            <div class="col-lg-10" id="container" style="padding: 25px 0px;">
-                <div id="society_list" class="main_tbl_container">
-                    <table class="table table-hover">
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <?php if($new_ok) { ?>
+            <button id="new_society" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
+                data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Society</button>
+            <?php } ?>
+
+            <!-- /.content -->
+            <section class="content">
+                <!-- <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
+                                </div>
+                                <div class="card-body">
+                                    fff
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Search Society</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label for="cmb_filter_district">Name:</label>
+                                            <div>
+                                                <select class="selectpicker select2 col-12" data-live-search="true"
+                                                    title="List by District" id="cmb_filter_district" required>
+                                                    <option value="0" selected="">All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="cmb_filter_ti_range">Contact No:</label>
+                                                <div>
+                                                    <select class="selectpicker  select2 col-12" data-live-search="true"
+                                                        title="List by Society" id="cmb_filter_society" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="cmb_filter_year">DSD:</label>
+                                                <div>
+                                                    <select class="form-control select2 col-12" id="cmb_filter_year">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="cmb_filter_year">GND:</label>
+                                                <div>
+                                                    <select class="form-control select2 col-12" id="cmb_filter_year">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="cmb_filter_year"> &nbsp;</label>
+                                                <div>
+                                                    <button id="btn_search" type="button"
+                                                        class="btn btn-primary btn-block"><i class="fa fa-search"></i>
+                                                        &nbsp;&nbsp; Show Society</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                    if($view_ok)
+                    {
+                ?>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Society List</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div id="benifiter_list" class="card-body main_tbl_container">
+                    <div id="society_list" class="main_tbl_container">
+                    <table class="table table-hover table-sm">
                         <thead class="red">
                           <tr>
                             <th>Name</th>
@@ -96,240 +193,87 @@
                         ?>
                         </tbody>
                       </table>
-                </div>
-            </div>
-            <div class="col-lg-1 side_border"></div>
-          </div>                            
-    <?php
-      }
-    ?>
-        <div class="modal fade" id="editModal" role="dialog">
-            <div class="modal-dialog">
-                <form class="form-horizontal" id="edit_form">
-                    <!-- Modal content-->
-                    <div class="modal-content" style="min-width: 900px;">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Edit Society</h4>
                         </div>
-                        <div id="model_content" class="modal-body">
-                          <p>this is it.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <div style="clear: both;">
-                              <div id="message" style="float: left; text-align: left;"></div>
-                              <div style="float: right;">
-                                  <button id="btnEditSave" type="submit" class="btn btn-default">Save</button>
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
                             </div>
+                    <!-- /.card-body -->
+                </div>
+
+                <?php } ?>
+
+
+                <!-- <div class="modal fade" id="payModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <form class="form-horizontal" id="payment_form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
                         </div>
                     </div>
-                </form>
+                </div> -->
+
+
+
+
+                <script>
+                //global variables
+                var token = "<?php echo $_SESSION['token']; ?>";
+                </script>
+
+
+
+        <div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Society</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body" id="model_content">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button id="btnEditSave" type="submit" class="btn btn-default">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
         </div>
-      <?php include('footer.php'); ?>
-      
-      <script>
-        $( document ).ready(function() {
-        });
-                
-        $(function() {
-            $('body').on('change', '#district_id', function() {
-                var district_id = $(this).val();
-                dsd_list = $("#dsd_id");
-                
-                //Set DSDs according to district selection
-                $.ajax({
-                    type: "GET",
-                    url: 'refresh_content.php',
-                    data: {token:token, option: 'get_dsd_by_district', district_id: district_id},
-                    async: false,
-                    dataType: "json",
-                    success: function(result)
-                            {
-                                //data = JSON.parse(result);
-                                dsd_list.find('option')
-                                        .remove()
-                                        .end();
-                                $.each(result, function(index, element) {
-                                    var option = new Option(element.name, element.id); 
-                                    dsd_list.append($(option)).selectpicker('refresh');
-                                });
-                            },
-                    failure: function () {
-                        alert("Failed!");
-                    }
-                });
-                
-                ti_list = $("#ti_id");
-                
-                //Set TI range according to district selection
-                $.ajax({
-                    type: "GET",
-                    url: 'refresh_content.php',
-                    data: {token:token, option: 'get_ti_by_district', district_id: district_id},
-                    async: false,
-                    dataType: "json",
-                    success: function(result)
-                            {
-                                //data = JSON.parse(result);
-                                ti_list.find('option')
-                                        .remove()
-                                        .end();
-                                $.each(result, function(index, element) {
-                                    var option = new Option(element.name, element.id); 
-                                    ti_list.append($(option)).selectpicker('refresh');
-                                });
-                            },
-                    failure: function () {
-                        alert("Failed!");
-                    }
-                });	  
-            });
-            
-            $('body').on('change', '[id^=dsd_id]', function() {
-                str = $(this)[0].id; 
-                //var index=str.substring(str.lastIndexOf("[")+1,str.lastIndexOf("]"));
-                
-                gnd_list = $("[id^=gnd_id]");
-                
-                //gnd = gnd_list[index];//this is not used but this is how to get relavent gnd combo from array
-                
-                var dsd_id = $(this).find(":selected").val();
-                
-                //Set GNDs according to DSD selection
-                $.ajax({
-                    type: "GET",
-                    url: 'refresh_content.php',
-                    data: {token:token, option: 'get_gnd_by_dsd', dsd_id: dsd_id},
-                    async: false,
-                    dataType: "json",
-                    success: function(result)
-                            {
-                                //data = JSON.parse(result);
-                                gnd_list.find('option')
-                                        .remove()
-                                        .end();
-                                $.each(result, function(index, element) {
-                                    var option = new Option(element.name, element.id); 
-                                    gnd_list.append($(option)).selectpicker('refresh');
-                                });
-                            },
-                    failure: function () {
-                        alert("Failed!");
-                    }
-                });	  
-            });
-            
-            $("#edit_form").submit(function(e) {
-                e.preventDefault();
-                var $form = $(this);
-                
-                var data = $form.serializeArray();
-                
-                //freez form
-                var $inputs = $("#edit_form").find("input, select, button, textarea");                                              
-                $inputs.prop("disabled", true);
-                
-                // make a POST ajax call 
-                $.ajax({
-                    type: "POST",
-                    url: 'refresh_content.php',
-                    data: {
-                        token:token, option: "save_society",
-                        data: $.param(data)
-                    },
-                    dataType: 'json', 
-                    async:false,
-                    beforeSend: function ( xhr ) {
-                        // maybe tell the user that the request is being processed
-                        //$("#status").show().html("<img src='images/preloader.gif' width='32' height='32' alt='processing...'>");
-                    }
-                    }).done(function( result ) {
-                        $inputs.prop("disabled", false);
-                        if (JSON.parse(result)[0].id !== undefined)
-                        {
-                            showMessage("Data Saved");
-                            $("#id").val(JSON.parse(result)[0].id);
-                        }
-                        else
-                        {
-                            showErrorMessage("Error saving society details");
-                            //$("#message").html(JSON.parse(result)); //uncomment this and check the error message
-                        }
-                        
-                        RefreshSocietyList();
-                    });
-            });
-                
-            $("#new_society").on("click", function () {
-                var id = this.id;
-                var farmer_id = id.substring(5, id.length);
-                $.ajax({
-                    type: "GET",
-                    url: "edit_society.php",
-                    data: {farmer_id: farmer_id },
-                    //contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function(result)
-                            {
-                                $("#model_content").empty();
-    			                $("#model_content").html(result);
-                                
-                                $('.selectpicker').selectpicker({
-                                    size: 4
-                                });
-                            },
-                    failure: function () {
-                        alert("Failed!");
-                    }
-                });
-                
-            });
-            
-            $('body').on('click', '.edit', function() {
-                var obj_id = this.id;
-                var id = obj_id.substring(5, obj_id.length);
-                $.ajax({
-                    type: "GET",
-                    url: "edit_society.php",
-                    data: {id: id },
-                    async: false,
-                    dataType: "html",
-                    success: function(result)
-                            {
-                                $("#model_content").empty();
-    			                $("#model_content").html(result);
-                                
-                                $('.selectpicker').selectpicker({
-                                    size: 4
-                                });
-                            },
-                    failure: function () {
-                        alert("Failed!");
-                    }
-                });
-            });
-        });
-        
-        function RefreshSocietyList()
-        {
-            $.ajax({
-                type: "GET",
-                url: "refresh_content.php",
-                data: {token:token, option: 'list_society' },
-                dataType: "html",
-                success: function(res)
-                        {
-                            $("#society_list").empty();
-			                $("#society_list").html(res);
-                        },
-                failure: function () {
-                    alert("Failed!");
-                }
-            });
-        }
-      </script>
+        <!-- /.modal-dialog -->
+</div>
+
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
+        <?php include_once('includes/app_footer.php');?>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <?php include_once('includes/footer.php');?>
+    <script src="js/society.js"></script>
+
 </body>
+
 </html>
