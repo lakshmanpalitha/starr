@@ -78,22 +78,21 @@ include_once('access.php');
 
             <!-- /.content -->
             <section class="content">
-                <div class="container-fluid">
+                <!-- <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
                                 </div>
-                                <!-- /.card-header -->
+
                                 <div class="card-body">
                                     fff
                                 </div>
-                                <!-- /.card-body -->
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="container-fluid">
                     <div class="row">
@@ -105,7 +104,7 @@ include_once('access.php');
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-3 col-md-3 col-sm-12">
                                             <label for="cmb_filter_district">District:</label>
                                             <div>
                                                 <select class="selectpicker select2 col-12" data-live-search="true"
@@ -124,7 +123,7 @@ include_once('access.php');
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-3 col-md-3 col-sm-12">
                                             <div class="form-group">
                                                 <label for="cmb_filter_ti_range">Society:</label>
                                                 <div>
@@ -134,7 +133,7 @@ include_once('access.php');
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-3 col-md-3 col-sm-12">
                                             <div class="form-group">
                                                 <label for="cmb_filter_year">Year:</label>
                                                 <div>
@@ -144,7 +143,7 @@ include_once('access.php');
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-3 col-md-3 col-sm-12">
                                             <div class="form-group">
                                                 <label for="cmb_filter_year"></label>
                                                 <div>
