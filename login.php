@@ -35,8 +35,38 @@ if(!isset($_SESSION))
 {
     display: none;
 }
+.LoginPage{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(images/login/background.jpg) 0 0 no-repeat;
+    background-size: cover;
+    align-items:right;
+
+}
+.LoginPage::before{
+    content: '';
+    background-color: #fff;
+    opacity: 0.8;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+.login-box, .register-box {
+    width: 400px;
+}
+.logo-image{
+  margin-bottom:10px;
+}
 </style>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page LoginPage">
       <!-- <div class="row" style="padding-top: 50px;">
         <div class="col-lg-4 col-sm-4 col-xs-2"></div>
         <div class="col-lg-4 col-sm-4 col-xs-8">
@@ -81,7 +111,8 @@ if(!isset($_SESSION))
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Admin</b>Login</a>
+      <img class="logo-image" src="images/logos/starr-logo.png" alt="Starr logo">
+      <a href="#" class="h1"><b>MIS</b>Login</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
