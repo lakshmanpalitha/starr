@@ -336,21 +336,25 @@ else
             </div>          
           </div>
 
-          
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="district_id">District:</label>
-            <div class="col-sm-4">
-              <select class="selectpicker" data-live-search="true" title="Select District" name="district_id" id="district_id" required>
-                    <?php
-                        $data_dist = callService("/get_all_districts?uid=$curr_uid");
-                        foreach ($data_dist as $dist) {
-                    ?>
-                        <option value="<?php echo $dist->id; ?>" <?php echo ($dist->id == $district_id) ? "selected" :"";?>><?php echo $dist->name; ?></option>
-                    <?php
-                        }
-                    ?>
-              </select>
-            </div>
+          <div class="row">
+            <div class="col-3">
+                <label for="cmb_filter_district">District:</label>
+                <div>
+                    <select class="selectpicker" data-live-search="true" title="List by District" name="cmb_filter_district" id="cmb_filter_district" required>
+                      <option value="0" selected="">All</option>
+                            <?php
+                                $data_dist = callService("/get_all_districts?uid=$curr_uid");
+                                foreach ($data_dist as $dist) {
+                            ?>
+                                <option value="<?php echo $dist->id; ?>" <?php echo ($dist->id == $district_id) ? "selected" :"";?>><?php echo $dist->name; ?></option>
+                            <?php
+                                }
+                            ?>
+                      </select>                                                
+                </div>
+            </div>          
+          </div>
+
             <label class="control-label col-sm-2" for="dsd">DSD:</label>
             <div class="col-sm-4">
               <select class="selectpicker" data-live-search="true" title="Select DSD" name="dsd_id" id="dsd_id" required>
