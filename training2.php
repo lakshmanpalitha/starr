@@ -17,9 +17,8 @@ if(!isset($_SESSION))
         ?>
 
 <?php 
-    $section = "society";
+    $section = "training";
     $data = array();
-    $curr_uid = (isset($_SESSION['curr_uid']) ? $_SESSION['curr_uid'] : null);
     
     $view_ok = false;
     $new_ok = false;
@@ -36,10 +35,10 @@ if(!isset($_SESSION))
             $edit_ok = ($section_access->edit=='Y' ? true : false);
     }
     else
-        exit(header("Location: login.php?redirect_to=society.php"));
+        exit(header("Location: login.php?redirect_to=training.php"));
     
     if($view_ok)
-        $data = callService("/get_all_society?uid=$curr_uid");
+        $data = callService("/get_all_training");
 ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -59,7 +58,7 @@ if(!isset($_SESSION))
 
             <!-- Main content -->
             <?php if($new_ok) { ?>
-            <button id="new_society" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
+            <button id="new_training" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
                 data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Society</button>
             <?php } ?>
 
@@ -155,43 +154,39 @@ if(!isset($_SESSION))
                         <h3 class="card-title">Society List</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div id="benifiter_list" class="card-body main_tbl_container">
-                    <div id="society_list" class="main_tbl_container">
+                    <div  class="card-body main_tbl_container">
+                    <div id="training_list" class="main_tbl_container">
                     <table class="table table-hover table-sm">
-                        <thead class="red">
-                          <tr>
-                            <th>Name</th>
-                            <th>Contact No</th>
-                            <th>Males</th>
-                            <th>Females</th>
-                            <th>District</th>
-                            <th>DSD</th>
-                            <th>GND</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            foreach ($data as $row) {
-                        ?>
-                            <tr>
-                                <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->contact_no; ?></td>
-                                <td><?php echo $row->num_of_male; ?></td>
-                                <td><?php echo $row->num_of_female; ?></td>
-                                <td><?php echo $row->district; ?></td>
-                                <td><?php echo $row->dsd; ?></td>
-                                <td><?php echo $row->gnd; ?></td>
-                                <?php if($edit_ok){ ?>
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>DPMU</th>
+                        <th>Budget Line</th>
+                        <th>Resource</th>
+                        <th>Organization</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                            <?php
+                                foreach ($data as $row) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $row->training_type; ?></td>
+                                    <td><?php echo $row->dpmu; ?></td>
+                                    <td><?php echo $row->budget_line; ?></td>
+                                    <td><?php echo $row->resource_person; ?></td>
+                                    <td><?php echo $row->organization; ?></td>
+                                    <td><?php echo $row->start_date; ?></td>
+                                    <td><?php echo $row->venue; ?></td>
                                     <td><button type="button" id="<?php echo "edit_" . $row->id; ?>" class="btn btn-primary btn-xs edit"  data-toggle="modal" data-target="#editModal">Edit</button></td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                        <?php
-                            }
-                        ?>
-                        </tbody>
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                    </tbody>
                       </table>
                         </div>
                             </div>
@@ -272,7 +267,7 @@ if(!isset($_SESSION))
     <!-- REQUIRED SCRIPTS -->
 
     <?php include_once('includes/footer.php');?>
-    <script src="js/society.js"></script>
+    <script src="js/trainibg.js"></script>
 
 </body>
 
