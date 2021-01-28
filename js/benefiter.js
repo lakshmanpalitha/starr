@@ -4,6 +4,8 @@ $(document).ready(function () {
   $filter_year.append($("<option />").val(0).text('All'));
   setYear($filter_year);
   $filter_year.val(0);
+
+ 
 });
 function setYear(dropdown) {
   var curr_year = (new Date).getFullYear();
@@ -852,10 +854,9 @@ $(function () {
       success: function (result) {
         $("#model_content").empty();
         $("#model_content").html(result);
-        $('.selectpicker').selectpicker({
-          size: 7
-        });
+        //$('.selectpicker').selectpicker({ size: 7 });
         hideLoader();
+        
       },
       failure: function () {
         alert("Failed!");

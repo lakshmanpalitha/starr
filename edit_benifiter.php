@@ -36,6 +36,7 @@ $section = "benefiter";
 $data = array();
 
 $curr_uid = (isset($_SESSION['curr_uid']) ? $_SESSION['curr_uid'] : null);
+var_dump($curr_uid);
 
 $new_ok = false;
 $edit_ok = false;
@@ -106,7 +107,7 @@ if($id > 0)
 
 <div id="model_content" class="modal-body">
 
-    <div class="form-group col-3">
+    <div class="form-group col-12 col-md-6 col-lg-3">
         <label class="control-label" for="txt_name">System ID:</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -116,7 +117,7 @@ if($id > 0)
         </div>
     </div>
 
-    <div class="form-group col-3">
+    <div class="form-group col-12 col-md-6 col-lg-3">
         <label class="control-label" for="txt_name">Name:</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -128,7 +129,7 @@ if($id > 0)
     </div>
 
     <div class="row">
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="txt_nic_no">NIC No:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -139,7 +140,7 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="cmb_gender">Gender:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -152,7 +153,7 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label col-sm-2" for="cmb_year">Year:</label>
             <div class="input-group">
                 <select class="form-control short" name="cmb_year" id="cmb_year">
@@ -165,7 +166,7 @@ if($id > 0)
         </div>
     </div>
 
-    <div class="form-group col-3" style="display: none;">
+    <div class="form-group  col-12 col-md-6 col-lg-3" style="display: none;">
         <label class="control-label col-sm-2" for="txt_target">Target:</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -176,8 +177,8 @@ if($id > 0)
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="txt_address">Address:</label>
+    <div class="form-group col-12 col-md-6">
+        <label class="control-label col-12" for="txt_address">Address:</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
@@ -188,7 +189,7 @@ if($id > 0)
     </div>
 
     <div class="row">
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="txt_contact_number">Contact No:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -200,28 +201,39 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label col-sm-2" for="cmb_beni_district">District:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-road"></i></span>
                 </div>
-                <select class="selectpicker" data-live-search="true" title="Select District" name="cmb_ben_district"
-                    id="cmb_ben_district" required>
+                <select class="selectpicker form-control short" data-live-search="true" title="Select District"
+                    name="cmb_ben_district" id="cmb_ben_district" required>
                     <?php
                     $data_district = callService("/get_all_districts?uid=$curr_uid");
+                    if($data_district){
                     foreach ($data_district as $dist) {
                 ?>
                     <option data-tokens="<?php echo $dist->name; ?>" value="<?php echo $dist->id; ?>"
-                        <?php echo ($district_id == $dist->id) ? "selected" :"";?>><?php echo $dist->name; ?></option>
+                        <?php echo ($district_id == $dist->id) ? "selected" :"";?>>
+
+                        <?php echo $dist->name; ?>
+                    </option>
                     <?php
                     }
+                }else{
+                    ?>
+
+                    <option>Districts not loaded</option>
+                    <?php
+
+                }
                 ?>
                 </select>
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="cmb_society">Society:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -246,7 +258,6 @@ if($id > 0)
             </div>
         </div>
 
-
     </div>
 
     <div class="form-group">
@@ -256,14 +267,14 @@ if($id > 0)
     </div>
 
     <div class="row">
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="cmb_bank">Bank:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-university"></i></span>
                 </div>
-                <select class="selectpicker" data-live-search="true" title="Select Bank" name="cmb_bank" id="cmb_bank"
-                    required>
+                <select class="selectpicker form-control shor" data-live-search="true" title="Select Bank"
+                    name="cmb_bank" id="cmb_bank" required>
                     <?php
                     $data_banks = callService("/get_all_banks");
                     foreach ($data_banks as $bnk) {
@@ -277,7 +288,7 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="txt_branch_name">Branch Name:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -288,7 +299,7 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="txt_branch_code">Branch Code:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -299,7 +310,7 @@ if($id > 0)
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-12 col-md-6 col-lg-3">
             <label class="control-label" for="txt_account_no">Account No:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -329,19 +340,7 @@ if($id > 0)
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                 <div class="card-body">
-                    <div id="spouse" class="panel-collapse collapse" style="padding-top: 10px;">
-
-                        <div class="row">
-                            <div class="form-group col-3">
-                                <label class="control-label" for="cmb_bank">Bank:</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-university"></i></span>
-                                    </div>
-                                    rrrr
-                                </div>
-                            </div>
-                        </div>
+                    <div id="spouse" class="panel-collapse" style="padding-top: 10px;">
 
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="spouse_name">Name:</label>
@@ -428,24 +427,93 @@ if($id > 0)
         <div class="card card-danger">
             <div class="card-header">
                 <h4 class="card-title w-100">
-                    <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
-                        Collapsible Group Danger
+                    <a class="d-block w-100" data-toggle="collapse" href="#dependant">
+                        Dependant Details
                     </a>
                 </h4>
             </div>
             <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    3
-                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                    laborum
-                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee
-                    nulla
-                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                    nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                    beer
-                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                    labore sustainable VHS.
+                <div class="card-body" id="dependant">
+                    <div class="row">
+                        <div class="form-group col-3">
+                            <label class="control-label" for="cmb_bank">Bank:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-university"></i></span>
+                                </div>
+                                rrrr
+                            </div>
+                        </div>
+
+                        <?php
+                    //start permit table
+                    if($data_dependats == "")
+                    {
+                  ?>
+                        <table id="tbl_dependant" class="info_table">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;"></th>
+                                    <th>Name</th>
+                                    <th>NIC</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="display: none;"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><button class="view_dependant" type="button">select</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php
+                    }
+                    else
+                    {
+                  ?>
+                        <table id="tbl_dependant" class="info_table">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;"></th>
+                                    <th>Name</th>
+                                    <th>NIC</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                            foreach ($data_dependats as $dt) {
+                          ?>
+                                <tr>
+                                    <td style="display: none;"><?php echo $dt->id; ?></td>
+                                    <td><?php echo $dt->name; ?></td>
+                                    <td><?php echo $dt->nic_no; ?></td>
+                                    <td><?php echo $dt->gender; ?></td>
+                                    <td><?php echo $dt->date_of_birth; ?></td>
+                                    <td><button class="view_dependant" type="button">select</button></td>
+                                </tr>
+                                <?php 
+                            }
+                          ?>
+                            </tbody>
+                        </table>
+                        <?php
+                    }
+                  ?>
+
+                    </div>
+
+                    
+
+                    <!-- //card body closed -->
                 </div>
             </div>
         </div>
@@ -477,75 +545,6 @@ if($id > 0)
 
 
 
-
-
-
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#spouse">Spouse Details</a>
-                </h4>
-            </div>
-            <!-- <div id="spouse" class="panel-collapse collapse" style="padding-top: 10px;">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_name">Name:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="spouse_name" id="spouse_name" placeholder="Enter spouse name" value="<?php echo $spouse_name; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_nic_no">NIC No:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="spouse_nic_no" id="spouse_nic_no" placeholder="Enter Spouse NIC No" value="<?php echo $spouse_nic_no; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_gender">Gender:</label>
-                    <div class="col-sm-10">
-                      <select class="form-control short" name="spouse_gender" id="spouse_gender">
-                        <option value="M" <?php echo ($spouse_gender == "M") ? "selected" :"";?>>Male</option>
-                        <option value="F" <?php echo ($spouse_gender == "F") ? "selected" :"";?>>Female</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_dob">DoB:</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control short" name="spouse_dob" id="spouse_dob" value="<?php echo $spouse_dob; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_highest_edu_level">Education Level:</label>
-                    <div class="col-sm-10">
-                      <select class="form-control short" name="spouse_highest_edu_level" id="spouse_highest_edu_level">
-                        <option value="Ordinary Level School" <?php echo ($spouse_highest_edu_level == "Ordinary Level School") ? "selected" :"";?>>Ordinary Level School</option>
-                        <option value="Advance Level School" <?php echo ($spouse_highest_edu_level == "Advance Level School") ? "selected" :"";?>>Advance Level School</option>
-                        <option value="Higher Education Diploma" <?php echo ($spouse_highest_edu_level == "Higher Education Diploma") ? "selected" :"";?>>Higher Education Diploma</option>
-                        <option value="University Degree" <?php echo ($spouse_highest_edu_level == "University Degree") ? "selected" :"";?>>University Degree</option>
-                        <option value="Master's Degree" <?php echo ($spouse_highest_edu_level == "Master's Degree") ? "selected" :"";?>>Master's Degree</option>
-                        <option value="Doctorate" <?php echo ($spouse_highest_edu_level == "Doctorate") ? "selected" :"";?>>Doctorate</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_is_fulltime_employee"></label>
-                    <div class="col-sm-10">
-                        <input name="spouse_is_fulltime_employee" id="spouse_is_fulltime_employee" type="checkbox" <?php echo ($spouse_is_fulltime_employee == "Y") ? "checked" :"";?>/>
-                        <label for="chk_spouse_is_fulltime_employee">Fulltime Employee</label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="spouse_is_parttime_emaployee"></label>
-                    <div class="col-sm-10">
-                        <input name="spouse_is_parttime_emaployee" id="spouse_is_parttime_emaployee" type="checkbox" <?php echo ($spouse_is_parttime_emaployee == "Y") ? "checked" :"";?>/>
-                        <label for="chk_spouse_is_parttime_emaployee">Part time Employee</label>
-                    </div>
-                  </div>
-              </div> -->
-        </div>
-    </div>
-
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -554,69 +553,7 @@ if($id > 0)
                 </h4>
             </div>
             <div id="dependant" class="panel-collapse collapse" style="padding-top: 10px;">
-                <?php
-                    //start permit table
-                    if($data_dependats == "")
-                    {
-                  ?>
-                <table id="tbl_dependant" class="info_table">
-                    <thead>
-                        <tr>
-                            <th style="display: none;"></th>
-                            <th>Name</th>
-                            <th>NIC</th>
-                            <th>Gender</th>
-                            <th>Date of Birth</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="display: none;"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="view_dependant" type="button">select</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <?php
-                    }
-                    else
-                    {
-                  ?>
-                <table id="tbl_dependant" class="info_table">
-                    <thead>
-                        <tr>
-                            <th style="display: none;"></th>
-                            <th>Name</th>
-                            <th>NIC</th>
-                            <th>Gender</th>
-                            <th>Date of Birth</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                            foreach ($data_dependats as $dt) {
-                          ?>
-                        <tr>
-                            <td style="display: none;"><?php echo $dt->id; ?></td>
-                            <td><?php echo $dt->name; ?></td>
-                            <td><?php echo $dt->nic_no; ?></td>
-                            <td><?php echo $dt->gender; ?></td>
-                            <td><?php echo $dt->date_of_birth; ?></td>
-                            <td><button class="view_dependant" type="button">select</button></td>
-                        </tr>
-                        <?php 
-                            }
-                          ?>
-                    </tbody>
-                </table>
-                <?php
-                    }
-                  ?>
+
 
                 <fieldset>
                     <legend>Add/Edit Dependant:</legend>

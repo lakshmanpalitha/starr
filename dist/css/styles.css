@@ -38,3 +38,59 @@
 .is-hide{
   display:none;
 }
+
+.modal-header .close
+{
+    display: none;
+}
+
+/* Styles for login page */
+.LoginPage{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../../images/login/background.jpg) 0 0 no-repeat;
+    background-size: cover;
+    align-items:right;
+
+}
+.LoginPage::before{
+    content: '';
+    background-color: #fff;
+    opacity: 0.8;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+.login-box, .register-box {
+    width: 400px;
+}
+.logo-image{
+  margin-bottom:10px;
+}
+
+
+@media (min-width: 960px){
+  
+}
+
+@media (max-width: 991.98px) { 
+
+  .modal.fade.show{
+    padding: 0 !important;
+  }
+  .modal-dialog.modal-xl{
+    width: 100%;
+    max-width: 100% !important;
+    top: 0 !important;
+    margin: 0;
+  }
+
+ }
