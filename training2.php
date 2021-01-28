@@ -48,7 +48,7 @@ if(!isset($_SESSION))
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Manage Society</h1>
+                            <h1 class="m-0">Training</h1>
                         </div><!-- /.col -->
                         <!-- /.col -->
                     </div><!-- /.row -->
@@ -59,7 +59,7 @@ if(!isset($_SESSION))
             <!-- Main content -->
             <?php if($new_ok) { ?>
             <button id="new_training" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
-                data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Society</button>
+                data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Training</button>
             <?php } ?>
 
             <!-- /.content -->
@@ -85,7 +85,7 @@ if(!isset($_SESSION))
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Search Society</h3>
+                                    <h3 class="card-title">Search Training</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -195,33 +195,6 @@ if(!isset($_SESSION))
 
                 <?php } ?>
 
-
-                <!-- <div class="modal fade" id="payModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <form class="form-horizontal" id="payment_form">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </form>
-                        </div>
-                    </div>
-                </div> -->
-
-
-
-
                 <script>
                 //global variables
                 var token = "<?php echo $_SESSION['token']; ?>";
@@ -233,7 +206,7 @@ if(!isset($_SESSION))
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Society</h4>
+              <h4 class="modal-title">New Training</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -267,7 +240,7 @@ if(!isset($_SESSION))
     <!-- REQUIRED SCRIPTS -->
 
     <?php include_once('includes/footer.php');?>
-    <script src="js/trainibg.js"></script>
+    <script src="js/training.js"></script>
 
 </body>
 
