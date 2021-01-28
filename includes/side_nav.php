@@ -16,7 +16,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="images/logos/ifad1.png" alt="Starr Logo" class="brand-image elevation-3">
+      <img src="http://localhost/starr/images/logos/starr-logo.png" alt="Starr Logo" class="brand-image elevation-3">
     </a>
 
     <!-- Sidebar -->
@@ -27,7 +27,20 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        <?php 
+                if(isset($_SESSION['login_user'])) 
+                {
+            ?>
+                <span class="color-white"> Welcome <?php echo $_SESSION['login_user']; ?></span> | <a class="logout btn btn-outline-light btn-sm">Logout</a>
+            <?php
+                } 
+                else
+                {
+            ?>
+                <a  href="login.php" style="color: white; padding-right: 20px;">Login</a> <!-- login modal is included in footer.php -->
+            <?php        
+                }
+            ?>
         </div>
       </div>
 
@@ -121,10 +134,46 @@
           </li> -->
           <li class="nav-item">
           <a href="benefiter.php" class="nav-link">
-            <i class="far fa-users"></i>
+          <i class="fas fa-project-diagram  nav-icon"></i>
+            
                 <p>Benefiter</p>
             </a>
           </li>
+
+          <li class="nav-item">
+          <a href="society.php" class="nav-link">
+          <i class="fas fa-users nav-icon"></i>
+                <p>Society</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+          <a href="factory.php" class="nav-link">
+          <i class="far fa-building nav-icon"></i>
+                <p>Factory</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+          <a href="nursery.php" class="nav-link">
+          <i class="fas fa-baby nav-icon"></i>
+                <p>Nursery</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+          <a href="training.php" class="nav-link">
+          <i class="fas fa-yin-yang nav-icon"></i>
+                <p>Training.php</p>
+            </a>
+          </li>
+
+
+          
+
+          
+
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

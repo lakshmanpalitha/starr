@@ -94,3 +94,12 @@
   }
 
  }
+
+
+ .brand-link .brand-image{
+   float: none !important;
+ }
+
+ .color-white{
+   color: #fff;
+ }
