@@ -17,9 +17,8 @@ if(!isset($_SESSION))
         ?>
 
 <?php 
-    $section = "society";
+    $section = "training";
     $data = array();
-    $curr_uid = (isset($_SESSION['curr_uid']) ? $_SESSION['curr_uid'] : null);
     
     $view_ok = false;
     $new_ok = false;
@@ -36,10 +35,10 @@ if(!isset($_SESSION))
             $edit_ok = ($section_access->edit=='Y' ? true : false);
     }
     else
-        exit(header("Location: login.php?redirect_to=society.php"));
+        exit(header("Location: login.php?redirect_to=training.php"));
     
     if($view_ok)
-        $data = callService("/get_all_society?uid=$curr_uid");
+        $data = callService("/get_all_training");
 ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -49,7 +48,7 @@ if(!isset($_SESSION))
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Manage Society</h1>
+                            <h1 class="m-0">Training</h1>
                         </div><!-- /.col -->
                         <!-- /.col -->
                     </div><!-- /.row -->
@@ -59,8 +58,8 @@ if(!isset($_SESSION))
 
             <!-- Main content -->
             <?php if($new_ok) { ?>
-            <button id="new_society" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
-                data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Society</button>
+            <button id="new_training" class="float-new-button btn btn-block btn-success btn-lg" data-toggle="modal"
+                data-target="#editModal"><i class="fas fa-plus"></i>&nbsp; New Training</button>
             <?php } ?>
 
             <!-- /.content -->
@@ -86,7 +85,7 @@ if(!isset($_SESSION))
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Search Society</h3>
+                                    <h3 class="card-title">Search Training</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -155,43 +154,39 @@ if(!isset($_SESSION))
                         <h3 class="card-title">Society List</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div id="benifiter_list" class="card-body main_tbl_container">
-                    <div id="society_list" class="main_tbl_container">
+                    <div  class="card-body main_tbl_container">
+                    <div id="training_list" class="main_tbl_container">
                     <table class="table table-hover table-sm">
-                        <thead class="red">
-                          <tr>
-                            <th>Name</th>
-                            <th>Contact No</th>
-                            <th>Males</th>
-                            <th>Females</th>
-                            <th>District</th>
-                            <th>DSD</th>
-                            <th>GND</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            foreach ($data as $row) {
-                        ?>
-                            <tr>
-                                <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->contact_no; ?></td>
-                                <td><?php echo $row->num_of_male; ?></td>
-                                <td><?php echo $row->num_of_female; ?></td>
-                                <td><?php echo $row->district; ?></td>
-                                <td><?php echo $row->dsd; ?></td>
-                                <td><?php echo $row->gnd; ?></td>
-                                <?php if($edit_ok){ ?>
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>DPMU</th>
+                        <th>Budget Line</th>
+                        <th>Resource</th>
+                        <th>Organization</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                            <?php
+                                foreach ($data as $row) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $row->training_type; ?></td>
+                                    <td><?php echo $row->dpmu; ?></td>
+                                    <td><?php echo $row->budget_line; ?></td>
+                                    <td><?php echo $row->resource_person; ?></td>
+                                    <td><?php echo $row->organization; ?></td>
+                                    <td><?php echo $row->start_date; ?></td>
+                                    <td><?php echo $row->venue; ?></td>
                                     <td><button type="button" id="<?php echo "edit_" . $row->id; ?>" class="btn btn-primary btn-xs edit"  data-toggle="modal" data-target="#editModal">Edit</button></td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                        <?php
-                            }
-                        ?>
-                        </tbody>
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                    </tbody>
                       </table>
                         </div>
                             </div>
@@ -199,33 +194,6 @@ if(!isset($_SESSION))
                 </div>
 
                 <?php } ?>
-
-
-                <!-- <div class="modal fade" id="payModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <form class="form-horizontal" id="payment_form">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </form>
-                        </div>
-                    </div>
-                </div> -->
-
-
-
 
                 <script>
                 //global variables
@@ -238,7 +206,7 @@ if(!isset($_SESSION))
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Society</h4>
+              <h4 class="modal-title">New Training</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -272,7 +240,7 @@ if(!isset($_SESSION))
     <!-- REQUIRED SCRIPTS -->
 
     <?php include_once('includes/footer.php');?>
-    <script src="js/society.js"></script>
+    <script src="js/training.js"></script>
 
 </body>
 
