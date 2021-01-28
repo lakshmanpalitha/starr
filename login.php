@@ -2,6 +2,8 @@
 
 $redirect_page = (isset($_GET['redirect_to']) ? $_GET['redirect_to'] : 'index.php');
 
+var_dump($redirect_page);
+
 ?>
 
 <?php
@@ -30,42 +32,6 @@ if(!isset($_SESSION))
 
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="dist/css/styles.css">
-<style type="text/css">
-.modal-header .close
-{
-    display: none;
-}
-.LoginPage{
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: url(images/login/background.jpg) 0 0 no-repeat;
-    background-size: cover;
-    align-items:right;
-
-}
-.LoginPage::before{
-    content: '';
-    background-color: #fff;
-    opacity: 0.8;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-}
-.login-box, .register-box {
-    width: 400px;
-}
-.logo-image{
-  margin-bottom:10px;
-}
-</style>
 <body class="hold-transition login-page LoginPage">
       <!-- <div class="row" style="padding-top: 50px;">
         <div class="col-lg-4 col-sm-4 col-xs-2"></div>
