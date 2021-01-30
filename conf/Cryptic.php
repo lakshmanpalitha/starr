@@ -3,7 +3,7 @@
 //define("ENCRYPTION_KEY", "grand@3716");
 $secret_key = 'ajantha_iwmi_hydro';
 $secret_iv = 'my_simple_secret_iv'; 
-$encrypted_ini_path = $_SERVER['DOCUMENT_ROOT'] . "/starr/conf/config.ini"; //localhost
+$encrypted_ini_path = $_SERVER['DOCUMENT_ROOT'] . "/conf/config.ini"; //localhost
 //$encrypted_ini_path = $_SERVER['DOCUMENT_ROOT'] . "/applications/l_irri/conf/config.ini"; //aurra
 
 $config = array();
